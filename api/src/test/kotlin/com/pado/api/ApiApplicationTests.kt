@@ -1,13 +1,13 @@
-package com.pado.studyidlewordcoupon
+package com.pado.api
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class StudyIdlewordCouponApplicationTests {
+class ApiApplicationTests {
 
-	@Test
-	fun contextLoads() {
-	}
+    @Test
+    fun contextLoads() {
+    }
 
 }
