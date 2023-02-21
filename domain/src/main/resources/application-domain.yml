@@ -1,0 +1,30 @@
+
+---
+spring:
+  config.activate.on-profile: local
+
+coupon:
+  flyway-locations:
+    - dataSourceName: displayDbDataSource
+      locations:
+        - classpath:db/migration
+        - classpath:db/data
+
+---
+spring:
+  config.activate.on-profile: dev
+  flyway:
+    enabled: false
+
+
+---
+spring:
+  config.activate.on-profile: beta
+  flyway:
+    enabled: false
+
+---
+spring:
+  config.activate.on-profile: prod
+  flyway:
+    enabled: false

@@ -7,8 +7,8 @@ import jakarta.persistence.Id
 
 
 @Entity
-class Member{
+class Member(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0
-}
+)

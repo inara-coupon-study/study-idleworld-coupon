@@ -6,7 +6,7 @@ jar.enabled = true
 
 dependencies {
   api("org.springframework.boot:spring-boot-starter-data-jpa")
-//  implementation("org.flywaydb:flyway-core") // 나중에 적용
+  implementation("org.flywaydb:flyway-core")
   implementation("com.h2database:h2")
 
   implementation("com.querydsl:querydsl-jpa:4.4.0")

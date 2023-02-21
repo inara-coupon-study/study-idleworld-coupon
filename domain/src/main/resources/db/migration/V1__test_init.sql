@@ -1,0 +1,4 @@
+CREATE TABLE MEMBER
+(
+  ID              BIGINT       NOT NULL PRIMARY KEY
+);

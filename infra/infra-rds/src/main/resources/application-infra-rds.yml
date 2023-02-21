@@ -11,20 +11,7 @@ spring:
     hibernate:
       ddl-auto: none
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-  datasource:
-    displaydb:
-      writer:
-        driver-class-name: org.postgresql.Driver
-        auto-commit: false
-        connection-timeout: 3000
-        max-lifetime: 50000
-        pool-name: HikariCP-Writer
-      reader:
-        driver-class-name: org.postgresql.Driver
-        auto-commit: true
-        connection-timeout: 3000
-        max-lifetime: 50000
-        pool-name: HikariCP-Reader
+
 
 ---
 spring:
@@ -38,8 +25,6 @@ spring:
   h2:
     console:
       enabled: true
-
-
 ---
 spring:
   config.activate.on-profile: dev
