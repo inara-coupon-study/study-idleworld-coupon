@@ -1,0 +1,28 @@
+---
+spring:
+  config.activate.on-profile: local
+  data:
+    mongodb:
+      database: test
+      port: 27018
+      host: localhost
+
+---
+spring:
+  config.activate.on-profile: dev
+#  data:
+#    mongodb:
+#      database: test
+#      username: test
+#      password: inaratest
+#      port: 27017
+#      host: test.cluster-c0vjbu2bjnku.ap-northeast-2.docdb.amazonaws.com
+
+
+---
+spring:
+  config.activate.on-profile: beta
+
+---
+spring:
+  config.activate.on-profile: prod
