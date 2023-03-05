@@ -35,8 +35,6 @@ import java.time.LocalDateTime
 @Document(collation = "coupon")
 class Coupon(
     val code: String,
-    val stockCount: Long,
     val title: String,
     val reward: String,
-    val detail: CouponDetail,
 )

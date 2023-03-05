@@ -6,6 +6,8 @@ spring:
       database: test
       port: 27017
       host: localhost
+      username: test
+      password: inaratest
 
 ---
 spring:
