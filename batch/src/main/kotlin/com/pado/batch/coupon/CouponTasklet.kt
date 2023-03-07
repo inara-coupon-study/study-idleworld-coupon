@@ -12,7 +12,7 @@ class CouponTasklet(
     private val reward: String,
     private val count: Int,
 ) : Tasklet{
-    override fun execute(contribution: StepContribution, chunkContext: ChunkContext): RepeatStatus? {
+    override fun execute(contribution: StepContribution, chunkContext: ChunkContext): RepeatStatus {
 
         println("test excute")
         for(i in 1..count) couponCreateService.create(title = title, reward = reward)

@@ -32,7 +32,7 @@ import java.time.LocalDateTime
 
 
 // 쿠폰 document 하나가 쿠폰의 종류이다.
-@Document(collation = "coupon")
+@Document(collection = "coupon")
 class Coupon(
     val code: String,
     val title: String,

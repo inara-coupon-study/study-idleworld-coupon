@@ -10,7 +10,7 @@ spring:
         connection.provider_disables_autocommit: true
     hibernate:
       ddl-auto: none
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 
 ---

@@ -1,6 +1,8 @@
 package com.pado.batch.coupon
 
 import com.pado.batch.application.CouponCreateService
+import com.pado.domain.annotation.EnableDomain
+import com.pado.domain.entity.Coupon
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.Step
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing
@@ -22,6 +24,7 @@ import org.springframework.transaction.support.AbstractPlatformTransactionManage
 
 
 @Configuration
+@EnableDomain
 class CouponCreateBatch @Autowired constructor(
   private val couponCreateService: CouponCreateService,
   private val jobRepository: JobRepository,
@@ -30,7 +33,7 @@ class CouponCreateBatch @Autowired constructor(
 
   @Bean
   fun couponCreateBatchJob(): Job {
-    return JobBuilder("job Builder", jobRepository)
+    return JobBuilder("coupon-create-batch-job", jobRepository)
       .start(couponCreateBatchStep(count = 0, title = "", reward = ""))
       .build()
   }
@@ -38,16 +41,16 @@ class CouponCreateBatch @Autowired constructor(
   @Bean
   @JobScope
   fun couponCreateBatchStep(
-    @Value("#{jobParameters[couponCount]}") count: Int,
+    @Value("#{jobParameters[couponCount]}") count: Int?,
     @Value("#{jobParameters[title]}") title: String,
     @Value("#{jobParameters[reward]}") reward: String,
   ): Step {
 
     println("test excute")
-    return StepBuilder("set builder", jobRepository)
+    return StepBuilder("coupon-create-batch-step", jobRepository)
       .tasklet(CouponTasklet(
         couponCreateService = couponCreateService,
-        count = count,
+        count = 10,
         reward = reward,
         title = title,
       ), platformTransactionManager)
