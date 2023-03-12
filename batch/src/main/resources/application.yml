@@ -6,3 +6,7 @@ spring:
       - domain
       - infra-mongo
       - infra-rds
+
+  batch:
+    job:
+      enabled: false
