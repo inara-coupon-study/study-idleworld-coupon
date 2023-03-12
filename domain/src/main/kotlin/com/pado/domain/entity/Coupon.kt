@@ -1,8 +1,7 @@
 package com.pado.domain.entity
 
-import com.pado.domain.type.CouponType
 import org.springframework.data.mongodb.core.mapping.Document
-import java.time.LocalDateTime
+import java.time.Instant
 
 
 // https://fastcampus.co.kr/story_article_yhs
@@ -32,9 +31,13 @@ import java.time.LocalDateTime
 
 
 // 쿠폰 document 하나가 쿠폰의 종류이다.
+// 지금 구조로 멤버가 모은 쿠폰 수 까지 알 수 있다.
 @Document(collection = "coupon")
 class Coupon(
     val code: String,
-    val title: String,
-    val reward: String,
+    val metaInfo: CouponMetaInfo?, // Meta info는 잘 변하지 않는 정보이므로 coupon에 embed 시킨다.
+    val createdAt: Instant = Instant.now(),
+    val memberInfo: Member? = null,
+    val assignedAt: Instant? = null,
+    val expiredAt: Instant? = null,
 )

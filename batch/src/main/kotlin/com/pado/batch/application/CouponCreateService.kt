@@ -1,7 +1,7 @@
 package com.pado.batch.application
 
 import com.pado.domain.entity.Coupon
-import com.pado.domain.entity.CouponFactory
+import com.pado.domain.factory.CouponFactory
 import com.pado.domain.repository.CouponRepository
 import org.springframework.stereotype.Service
 
@@ -17,7 +17,7 @@ class CouponCreateService(
     }
 
     private fun createCoupon(title: String, reward: String): Coupon {
-        val createCoupon = couponFactory.createCouponCode(title = title, reward = reward)
+        val createCoupon = couponFactory.createCouponCode(metaInfo = null)
         val foundCoupon = couponRepository.findByCode(code = createCoupon.code)
 
         return if(foundCoupon == null) createCoupon
