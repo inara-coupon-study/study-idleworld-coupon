@@ -4,9 +4,8 @@ spring:
   data:
     mongodb:
       database: test
-      port: 27018
+      port: 27017
       host: localhost
-
 ---
 spring:
   config.activate.on-profile: dev

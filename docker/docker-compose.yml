@@ -4,7 +4,7 @@ services:
     image: mongo:6.0.4
     restart: always
     ports:
-      - 27018:27018
+      - 27017:27017
 
 #  mongo_seed:
 #    image: mongo:6.0.4

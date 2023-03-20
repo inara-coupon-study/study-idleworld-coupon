@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: local
+    include:
+      - api-common
+      - domain
+      - infra-mongo
+      - infra-rds
+
+  batch:
+    job:
+      enabled: false

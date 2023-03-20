@@ -1,6 +1,4 @@
-package com.kidsworld.infra.mongo.annotation
-
-import com.kidsworld.infra.mongo.MongoConfiguration
+package com.mongodb.annotations
 import org.springframework.context.annotation.Import
 
 @Target(AnnotationTarget.CLASS)

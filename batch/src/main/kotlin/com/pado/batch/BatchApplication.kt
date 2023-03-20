@@ -1,18 +1,16 @@
-package com.pado.api
+package com.pado.batch
 
 import com.pado.domain.annotation.EnableDomain
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.autoconfigure.domain.EntityScan
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.boot.runApplication
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
-@SpringBootApplication
 @EnableDomain
+@SpringBootApplication(scanBasePackages = ["com.pado"])
 @ConfigurationPropertiesScan
-@EntityScan(basePackages = ["com.pado.domain"])
-class ApiApplication
+class BatchApplication
 
 fun main(args: Array<String>) {
-    runApplication<ApiApplication>(*args)
+    runApplication<BatchApplication>(*args)
 }
