@@ -11,7 +11,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 @EnableDomain
 @ConfigurationPropertiesScan
 @EntityScan(basePackages = ["com.pado.domain"])
-@EnableJpaRepositories(basePackages = ["com.pado.domain"])
 class ApiApplication
 
 fun main(args: Array<String>) {

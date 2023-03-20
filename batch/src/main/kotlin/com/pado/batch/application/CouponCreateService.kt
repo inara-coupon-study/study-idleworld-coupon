@@ -6,6 +6,7 @@ import com.pado.domain.repository.CouponRepository
 import org.springframework.stereotype.Service
 
 @Service
+@Deprecated("Batch에서 create하지 않음")
 class CouponCreateService(
     private val couponRepository: CouponRepository,
     private val couponFactory: CouponFactory,
