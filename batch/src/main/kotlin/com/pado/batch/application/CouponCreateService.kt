@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 @Service
 @Deprecated("Batch에서 create하지 않음")
 class CouponCreateService(
-    private val couponRepository: CouponRepository,
+    private val couponRepository: CouponRepository<Any?, Any?>,
     private val couponFactory: CouponFactory,
 ) {
     fun create(title: String, reward: String){

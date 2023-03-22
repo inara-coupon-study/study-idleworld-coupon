@@ -9,3 +9,6 @@ findProject(":infra:infra-mongo")?.name = "infra-mongo"
 include("infra:infra-rds")
 findProject(":infra:infra-rds")?.name = "infra-rds"
 
+include("infra:infra-redis")
+findProject(":infra:infra-redis")?.name = "infra-redis"
+

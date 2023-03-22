@@ -1,0 +1,29 @@
+---
+# config 참고) https://backtony.github.io/spring/redis/2021-08-29-spring-redis-1/
+
+spring:
+  redis:
+    pool:
+      min-idle: 0
+      max-idle: 8
+      max-active: 8
+
+---
+spring:
+  config.activate.on-profile: dev
+#  data:
+#    mongodb:
+#      database: test
+#      username: test
+#      password: inaratest
+#      port: 27017
+#      host: test.cluster-c0vjbu2bjnku.ap-northeast-2.docdb.amazonaws.com
+
+
+---
+spring:
+  config.activate.on-profile: beta
+
+---
+spring:
+  config.activate.on-profile: prod

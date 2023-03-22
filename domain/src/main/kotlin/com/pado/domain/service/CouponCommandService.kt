@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class CouponCommandService(
-    private val couponRepository: CouponRepository,
+    private val couponRepository: CouponRepository<Any?, Any?>,
     private val couponFactory: CouponFactory,
 ) {
     fun create(couponMetaInfoDto: CouponMetaInfoDto, count: Int){

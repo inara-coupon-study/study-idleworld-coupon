@@ -35,7 +35,7 @@ class CouponController(
         // job 파라미터 추출
         // builder의 인자 -> (현재 만드는 잡 파라미터에 추가하고 싶은 잡파라미터, jobExplorer)
         // jobExplorer가 필요한 이유는 다음 파라미터를 위해 기존 run.id를 가져오기 위해서 필요함
-        val jobParameters = JobParametersBuilder(request.jobParameters, jobExplorer)
+        val jobParameters = JobParametersBuilder(jobExplorer)
             .getNextJobParameters(job)
             .toJobParameters()
 
