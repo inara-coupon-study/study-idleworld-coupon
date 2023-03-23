@@ -1,4 +1,4 @@
-package com.kidsworld.infra.rds.datasource
+package com.pado.infra.rds.datasource
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean

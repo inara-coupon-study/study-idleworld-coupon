@@ -1,7 +1,7 @@
-package com.kidsworld.infra.rds.datasource.annotation
+package com.pado.infra.rds.datasource.annotation
 
-import com.kidsworld.infra.rds.datasource.DisplayDbConfig
-import com.kidsworld.infra.rds.datasource.JpaAuditConfig
+import com.pado.infra.rds.datasource.DisplayDbConfig
+import com.pado.infra.rds.datasource.JpaAuditConfig
 import org.springframework.context.annotation.Import
 
 @Target(AnnotationTarget.CLASS)

@@ -1,4 +1,4 @@
-package com.kidsworld.infra.rds.datasource
+package com.pado.infra.rds.datasource
 
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.boot.autoconfigure.batch.BatchDataSource
