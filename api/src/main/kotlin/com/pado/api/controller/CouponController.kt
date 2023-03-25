@@ -1,22 +1,18 @@
 package com.pado.api.controller
 
-import com.pado.api.dto.request.CouponMetaInfoRequest
+import com.pado.api.dto.request.CreateCouponRequest
 import com.pado.api.service.CouponService
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 class CouponController(
     private val couponService: CouponService,
 ) {
 
-    @GetMapping("coupon")
+    @PostMapping("coupon")
     fun createCoupon(
-        @RequestBody request: CouponMetaInfoRequest,
-        @RequestParam count: Int,
+        @RequestBody request: CreateCouponRequest,
     ){
-        couponService.createCoupon(metaInfo = request, count = count)
+        couponService.createCoupon(request = request)
     }
 }

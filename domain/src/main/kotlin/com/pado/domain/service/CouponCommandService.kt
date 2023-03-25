@@ -1,6 +1,7 @@
 package com.pado.domain.service
 
 import com.pado.domain.dto.CouponMetaInfoDto
+import com.pado.domain.dto.MemberDto
 import com.pado.domain.entity.Coupon
 import com.pado.domain.factory.CouponFactory
 import com.pado.domain.repository.CouponRepository
@@ -26,5 +27,9 @@ class CouponCommandService(
 
         return if(foundCoupon == null) createCoupon
         else createCoupon(metaInfo = metaInfo)
+    }
+
+    fun assign(memberDto: MemberDto){
+
     }
 }

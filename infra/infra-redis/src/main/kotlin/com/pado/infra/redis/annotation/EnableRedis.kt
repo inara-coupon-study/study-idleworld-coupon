@@ -1,5 +1,5 @@
 package com.pado.infra.redis.annotation
-import com.mongodb.annotations.RedisConfiguration
+import com.pado.infra.redis.RedisConfiguration
 import org.springframework.context.annotation.Import
 
 @Target(AnnotationTarget.CLASS)

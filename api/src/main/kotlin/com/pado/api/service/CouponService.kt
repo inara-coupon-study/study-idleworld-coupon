@@ -1,6 +1,6 @@
 package com.pado.api.service
 
-import com.pado.api.dto.request.CouponMetaInfoRequest
+import com.pado.api.dto.request.CreateCouponRequest
 import com.pado.domain.service.CouponCommandService
 import org.springframework.stereotype.Service
 
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service
 class CouponService(
     private val couponCommandService: CouponCommandService,
 ) {
-    fun createCoupon(metaInfo: CouponMetaInfoRequest, count: Int) {
-        couponCommandService.create(CouponMetaInfoRequest.toDto(request = metaInfo), count = count)
+    fun createCoupon(request: CreateCouponRequest,) {
+        couponCommandService.create(CreateCouponRequest.toDto(request = request), count = request.count)
     }
 
 }

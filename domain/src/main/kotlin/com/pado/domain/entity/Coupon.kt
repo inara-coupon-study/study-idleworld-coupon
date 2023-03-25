@@ -1,5 +1,6 @@
 package com.pado.domain.entity
 
+import com.pado.domain.type.CouponGrade
 import org.springframework.data.mongodb.core.mapping.Document
 import java.time.Instant
 
@@ -37,7 +38,7 @@ class Coupon(
     val code: String,
     val metaInfo: CouponMetaInfo?, // Meta info는 잘 변하지 않는 정보이므로 coupon에 embed 시킨다.
     val createdAt: Instant = Instant.now(),
-    val memberInfo: Member? = null,
+    val member: Member? = null,
     val assignedAt: Instant? = null,
     val expiredAt: Instant? = null,
 )
