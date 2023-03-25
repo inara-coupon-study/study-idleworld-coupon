@@ -35,10 +35,10 @@ import java.time.Instant
 // 지금 구조로 멤버가 모은 쿠폰 수 까지 알 수 있다.
 @Document(collection = "coupon")
 class Coupon(
-    val code: String,
+    val code: String, // 랜덤 코드
     val metaInfo: CouponMetaInfo?, // Meta info는 잘 변하지 않는 정보이므로 coupon에 embed 시킨다.
     val createdAt: Instant = Instant.now(),
-    val member: Member? = null,
-    val assignedAt: Instant? = null,
-    val expiredAt: Instant? = null,
+    val member: Member? = null, // 쿠폰을 할당받은 멤버
+    val assignedAt: Instant? = null, // 쿠폰이 할당된 날짜
+    val expiredAt: Instant? = null, // 할당된 후 쿠폰이 만료될 날짜
 )
