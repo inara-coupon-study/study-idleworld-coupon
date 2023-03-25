@@ -59,3 +59,16 @@ https://sabarada.tistory.com/106?category=856943
 아래 블로그를 참고한다.
 https://jgrammer.tistory.com/m/entry/Redis%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%84%A0%EC%B0%A9%EC%88%9C-%EC%BF%A0%ED%8F%B0-%EB%B0%9C%EA%B8%89-%EC%84%9C%EB%B2%84-%EC%84%A4%EA%B3%84
 https://velog.io/@ddhyun93/Kotlin-Spring-Boot-Redis-Distributed-Lock-%ED%99%9C%EC%9A%A9-%EC%84%A0%EC%B0%A9%EC%88%9C-%EC%9D%91%EB%AA%A8-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B0%9C%EB%B0%9C
+
+
+### week6
+#### 목표
+##### 서비스 관점
+- 쿠폰 조각을 관리해야한다.
+- 사용자가 할당된 날짜로부터 만료기간을 정의해야한다.
+- 사용자는 조각 별 할당 개수를 다 모으면 발급 가능 상태임을 조회할 수 있어야한다.
+
+##### 아키텍처 관점
+- 발급된 쿠폰을 레디스를 통해 대기열로 할당해야한다. (자유)
+
+![img_1.png](img_1.png)
