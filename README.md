@@ -72,3 +72,45 @@ https://velog.io/@ddhyun93/Kotlin-Spring-Boot-Redis-Distributed-Lock-%ED%99%9C%E
 - 발급된 쿠폰을 레디스를 통해 대기열로 할당해야한다. (자유)
 
 ![img_1.png](img_1.png)
+
+#### week6 결과
+도와줘 chat gpt야!
+
+![img_2.png](img_2.png)
+
+그렇게, 얻은 코드..
+write through 방식으로 mongo와 Redis 모두에 저장하기
+-> 실패
+```
+@Service
+class ProductService(
+    private val productRepository: ProductRepository,
+    private val productRedisRepository: ProductRedisRepository
+) {
+    fun getProduct(id: String): Product? {
+        val cachedProduct = productRedisRepository.findById(id).orElse(null)
+        return if (cachedProduct != null) {
+            cachedProduct
+        } else {
+            val product = productRepository.findById(id).orElse(null)
+            if (product != null) {
+                productRedisRepository.save(product)
+            }
+            product
+        }
+    }
+
+    fun saveProduct(product: Product): Product {
+        val savedProduct = productRepository.save(product)
+        productRedisRepository.save(savedProduct)
+        return savedProduct
+    }
+}
+```
+
+
+https://medium.com/@tobintom/redis-cache-with-mongo-db-and-spring-boot-93496f036f63
+
+https://hyperconnect.github.io/2022/12/12/fix-increasing-memory-usage.html
+
+https://devoong2.tistory.com/entry/Spring-Redisson-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-Distribute-Lock-%EB%8F%99%EC%8B%9C%EC%84%B1-%EC%B2%98%EB%A6%AC-1

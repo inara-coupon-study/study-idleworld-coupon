@@ -1,13 +1,11 @@
 package com.pado.domain.repository
 
-import com.pado.domain.entity.RedisCoupon
-import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.stereotype.Repository
 
 
 @Repository
-class RedisRepository()
-   // private val redisTemplate: RedisTemplate<String, Any>,
+class RedisTestRepository()
+// private val redisTemplate: RedisTemplate<String, Any>,
 //) {
 //
 //    fun zAdd(key: String, value: Any, score: Double): Boolean? {

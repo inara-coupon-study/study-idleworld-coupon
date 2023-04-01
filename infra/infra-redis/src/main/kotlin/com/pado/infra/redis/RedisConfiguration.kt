@@ -6,9 +6,11 @@ import org.redisson.config.Config
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.data.redis.repository.configuration.EnableRedisRepositories
 
 
 @Configuration
+@EnableRedisRepositories(basePackages = arrayOf("com.pado.domain.repository.redis"))
 class RedisConfiguration {
 //    @Value("\${spring.data.redis.host}")
     // todo: yml value 주입 에러

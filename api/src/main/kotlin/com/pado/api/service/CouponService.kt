@@ -13,7 +13,7 @@ class CouponService(
     private val couponCommandService: CouponCommandService,
 ) {
     fun createCoupon(request: CreateCouponRequest,) {
-        couponCommandService.create(CreateCouponRequest.toDto(request = request), count = request.count)
+        couponCommandService.createAndSave(CreateCouponRequest.toDto(request = request), count = request.count)
     }
 
 }
