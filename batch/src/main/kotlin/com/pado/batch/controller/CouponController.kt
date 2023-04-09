@@ -27,7 +27,7 @@ class CouponController(
     @PostMapping("/batch")
     fun runJob(@RequestBody request: CouponCreateRequest): ExitStatus? {
 
-        // todo: Coupon Request를 Job parameter 변환으로 바꿔주기.
+        // todo: MongoCoupon Request를 Job parameter 변환으로 바꿔주기.
 
         // 잡 이름의 빈 검색
         val job: Job = jobRegistry.getJob(COUPON_CREATE_BATCH_JOB)

@@ -2,10 +2,11 @@ package com.pado.domain.service
 
 import com.pado.domain.dto.CouponMetaInfoDto
 import com.pado.domain.entity.Coupon
+import com.pado.domain.entity.mongo.MongoCoupon
+import com.pado.domain.entity.redis.RedisCoupon
 import com.pado.domain.factory.CouponFactory
 import com.pado.domain.repository.mongo.MongoCouponRepository
 import com.pado.domain.repository.redis.RedisCouponRepository
-import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.stereotype.Service
 
 
@@ -32,11 +33,10 @@ class CouponCommandService(
     }
 
     // 생성한 랜덤 넘버 쿠폰을 저장
-
     private fun saveCoupon(couponMetaInfoDto: CouponMetaInfoDto) {
         val createdCoupon = createCoupon(metaInfo = couponMetaInfoDto)
-        // mongoCouponRepository.save(createdCoupon)
-        redisCouponRepository.save(createdCoupon)
+        mongoCouponRepository.save(MongoCoupon.toMongoCoupon(coupon = createdCoupon))
+        redisCouponRepository.save(RedisCoupon.toRedisCoupon(createdCoupon))
     }
 
     // 쿠폰 랜덤 넘버 생성

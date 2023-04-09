@@ -1,9 +1,10 @@
-package com.pado.domain.entity
+package com.pado.domain.entity.mongo
 
 import com.pado.domain.type.EventPopupType
 import org.springframework.data.mongodb.core.mapping.Document
 
-class CouponEvent(
+@Document(collection = "coupon_event")
+class MongoCouponEvent(
     val name: String,
     val couponCount: Long,
     val type: EventPopupType?,

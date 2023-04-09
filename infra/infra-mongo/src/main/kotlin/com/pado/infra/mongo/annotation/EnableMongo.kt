@@ -1,5 +1,5 @@
-package com.pado.infra.redis.annotation
-import com.pado.infra.redis.MongoConfiguration
+package com.pado.infra.mongo.annotation
+import com.pado.infra.mongo.MongoConfiguration
 import org.springframework.context.annotation.Import
 
 @Target(AnnotationTarget.CLASS)

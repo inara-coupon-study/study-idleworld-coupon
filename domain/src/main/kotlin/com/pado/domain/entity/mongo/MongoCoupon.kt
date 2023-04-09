@@ -1,10 +1,8 @@
-package com.pado.domain.entity
+package com.pado.domain.entity.mongo
 
-import com.pado.domain.type.CouponGrade
 import jakarta.persistence.Id
 import org.bson.types.ObjectId
 import org.springframework.data.mongodb.core.mapping.Document
-import org.springframework.data.redis.core.RedisHash
 import java.time.Instant
 
 
@@ -38,11 +36,26 @@ import java.time.Instant
 // 지금 구조로 멤버가 모은 쿠폰 수 까지 알 수 있다.
 //@Document(collection = "coupon")
 
-data class Coupon(
+@Document(collection = "coupon")
+data class MongoCoupon(
+    val id: ObjectId = ObjectId.get(),
     @Id val code: String,
-    val metaInfo: CouponMetaInfo?, // Meta info는 잘 변하지 않는 정보이므로 coupon에 embed 시킨다.
+    val metaInfo: MongoCouponMetaInfo?, // Meta info는 잘 변하지 않는 정보이므로 coupon에 embed 시킨다.
     val createdAt: Instant = Instant.now(),
-    val memberInfo: Member? = null,
+    val mongoMemberInfo: MongoMember? = null,
     val assignedAt: Instant? = null,
     val expiredAt: Instant? = null,
-)
+){
+    companion object{
+        fun toMongoCoupon(coupon: com.pado.domain.entity.Coupon): MongoCoupon {
+            return MongoCoupon(
+                code = coupon.code,
+                metaInfo = coupon.metaInfo?.let { MongoCouponMetaInfo.toMongoCouponMetaInfo(it) },
+                createdAt = coupon.createdAt,
+                mongoMemberInfo = coupon.memberInfo?.let { MongoMember.toMongoMember(it) },
+                assignedAt = coupon.assignedAt,
+                expiredAt = coupon.expiredAt,
+            )
+        }
+    }
+}

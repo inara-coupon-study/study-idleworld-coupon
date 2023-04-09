@@ -1,7 +1,7 @@
 package com.pado.domain.configuration
 
 import com.pado.infra.rds.datasource.annotation.EnableCouponJpa
-import com.pado.infra.redis.annotation.EnableMongo
+import com.pado.infra.mongo.annotation.EnableMongo
 import com.pado.infra.redis.annotation.EnableRedis
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.context.annotation.ComponentScan

@@ -1,9 +1,10 @@
-package com.pado.domain.entity
+package com.pado.domain.entity.mongo
 
 import org.bson.types.ObjectId
 import org.springframework.data.mongodb.core.mapping.Document
 
-class CouponStock(
+@Document(collection = "coupon_stock")
+class MongoCouponStock(
     val couponMetaInfoId: ObjectId,
     val count: Long,
 )

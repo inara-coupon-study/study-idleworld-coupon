@@ -1,4 +1,4 @@
-package com.pado.infra.redis
+package com.pado.infra.mongo
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories
