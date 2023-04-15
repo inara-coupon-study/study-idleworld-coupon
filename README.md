@@ -114,3 +114,16 @@ https://medium.com/@tobintom/redis-cache-with-mongo-db-and-spring-boot-93496f036
 https://hyperconnect.github.io/2022/12/12/fix-increasing-memory-usage.html
 
 https://devoong2.tistory.com/entry/Spring-Redisson-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-Distribute-Lock-%EB%8F%99%EC%8B%9C%EC%84%B1-%EC%B2%98%EB%A6%AC-1
+
+### week 7 
+#### 목표
+1. 레디스 컨피그를 완료해야한다.
+2. 쿠폰 등급 별 할당 개수를 정의할 수 있어야한다.
+
+#### 결과
+1. 레디스 컨피그를 완료하고, 몽고 저장시 레디스에도 동시에 저장되도록 했다.
+2. count를 기준으로 등급 별 할당 개수를 정의했다.
+![img_3.png](img_3.png)
+3. 다만 아쉬운 부분은 등급 별 할당된 개수를 알아야 쿠폰에 대한 등급을 지정할 수 있어서
+   factory에 위임하던 쿠폰 create의 기능중 일부가 policy 형태로 밖으로 나왔다.
+   이 패턴이 맞는가 싶기도 하다.
