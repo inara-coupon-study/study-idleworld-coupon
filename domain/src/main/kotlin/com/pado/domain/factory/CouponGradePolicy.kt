@@ -9,19 +9,13 @@ class CouponGradePolicy {
         val result = mutableListOf<CouponGrade>()
         val couponGradeList = CouponGrade.values().toList()
 
-        // 각 쿠폰 종류 별 비율만큼 카운트
-        for (i in couponGradeList.indices) {
-            val a = count * couponGradeList[i].rate / 100
-            for(j in 0 until a) {
-                result.add(couponGradeList[i])
-            }
+        // 각 쿠폰 종류 별 비율 만큼 카운트
+        couponGradeList.forEach { couponGrade ->
+            repeat(count * couponGrade.rate / 100) { result.add(couponGrade) }
         }
 
         // 나머지는 normal 쿠폰으로 채움
-        val remain = count - result.size
-        for(i in 0 until remain) {
-            result.add(CouponGrade.NORMAL)
-        }
+        repeat(count - result.size) { result.add(CouponGrade.NORMAL) }
 
         return result
     }

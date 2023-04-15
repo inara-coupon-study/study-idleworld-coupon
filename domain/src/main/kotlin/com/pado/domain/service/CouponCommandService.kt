@@ -30,6 +30,7 @@ class CouponCommandService(
 
     // 쿠폰을 생성 후 저장
     fun createAndSave(couponMetaInfoDto: CouponMetaInfoDto, count: Int) {
+        // for문이 도는 곳 밖에서 couponGrade를 처리해야 비율 별 카운트를 처리할 수 있다.
         val couponGrade = couponGradePolicy.getCouponGradeCount(count = count)
 
         for (i in 0 until count) {
