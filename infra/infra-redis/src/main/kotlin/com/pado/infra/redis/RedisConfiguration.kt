@@ -11,7 +11,7 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 
 
 @Configuration
-@EnableRedisRepositories(basePackages = arrayOf("com.pado.domain..repository.redis"))
+@EnableRedisRepositories(basePackages = arrayOf("com.pado.domain.repository.redis"))
 class RedisConfiguration {
 //    @Value("\${spring.data.redis.host}")
     // todo: yml value 주입 에러

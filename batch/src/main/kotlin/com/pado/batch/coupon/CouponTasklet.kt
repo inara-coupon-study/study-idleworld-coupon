@@ -15,7 +15,7 @@ class CouponTasklet(
     override fun execute(contribution: StepContribution, chunkContext: ChunkContext): RepeatStatus {
 
         println("test excute")
-        for(i in 1..count) couponCreateService.create(title = title, reward = reward)
+//        for(i in 1..count) couponCreateService.create(title = title, reward = reward)
 
         return RepeatStatus.FINISHED
     }
