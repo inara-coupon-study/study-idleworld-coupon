@@ -5,8 +5,10 @@ import com.pado.domain.entity.Coupon
 import com.pado.domain.entity.mongo.MongoCoupon
 import com.pado.domain.entity.redis.RedisCoupon
 import com.pado.domain.factory.CouponFactory
+import com.pado.domain.factory.CouponGradePolicy
 import com.pado.domain.repository.mongo.MongoCouponRepository
 import com.pado.domain.repository.redis.RedisCouponRepository
+import com.pado.domain.type.CouponGrade
 import org.springframework.stereotype.Service
 
 
@@ -19,6 +21,7 @@ class CouponCommandService(
     private val mongoCouponRepository: MongoCouponRepository,
     private val redisCouponRepository: RedisCouponRepository,
     private val couponFactory: CouponFactory,
+    private val couponGradePolicy: CouponGradePolicy,
 ) {
     /**
      *    mongo 저장시 Redis를 동시 저장하도록 한다 -> repository 가 redis / mongo에 두 벌 존재하는 격
@@ -27,25 +30,29 @@ class CouponCommandService(
 
     // 쿠폰을 생성 후 저장
     fun createAndSave(couponMetaInfoDto: CouponMetaInfoDto, count: Int) {
-        for (i in 1..count) {
-            saveCoupon(couponMetaInfoDto)
+        val couponGrade = couponGradePolicy.getCouponGradeCount(count = count)
+
+        for (i in 0 until count) {
+            saveCoupon(couponMetaInfoDto, couponGrade[i])
         }
     }
 
     // 생성한 랜덤 넘버 쿠폰을 저장
-    private fun saveCoupon(couponMetaInfoDto: CouponMetaInfoDto) {
-        val createdCoupon = createCoupon(metaInfo = couponMetaInfoDto)
+    private fun saveCoupon(couponMetaInfoDto: CouponMetaInfoDto, couponGrade: CouponGrade) {
+        val createdCoupon = createCoupon(metaInfo = couponMetaInfoDto, couponGrade = couponGrade)
+
+
         mongoCouponRepository.save(MongoCoupon.toMongoCoupon(coupon = createdCoupon))
         redisCouponRepository.save(RedisCoupon.toRedisCoupon(createdCoupon))
     }
 
     // 쿠폰 랜덤 넘버 생성
-    private fun createCoupon(metaInfo: CouponMetaInfoDto): Coupon {
-        val createdCoupon = couponFactory.createCouponCode(metaInfo = metaInfo.toEntity())
+    private fun createCoupon(metaInfo: CouponMetaInfoDto, couponGrade: CouponGrade): Coupon {
+        val createdCoupon = couponFactory.createCouponCode(metaInfo = metaInfo.toEntity(), couponGrade = couponGrade)
         val foundCoupon = redisCouponRepository.findByCode(code = createdCoupon.code)
 
         return if (foundCoupon == null) createdCoupon
-        else createCoupon(metaInfo = metaInfo)
+        else createCoupon(metaInfo = metaInfo, couponGrade = couponGrade)
     }
 }
 

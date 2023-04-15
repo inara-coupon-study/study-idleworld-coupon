@@ -10,7 +10,7 @@ data class CouponMetaInfoDto(
     val setPieceCount: Int,
     val expiredPeriodUnit: ExpiredPeriodUnit,
     val expiredPeriodNumber: Int,
-    val couponGrade: CouponGrade,
+    val couponGrade: CouponGrade? = null,
 ) {
     fun toEntity(): CouponMetaInfo = CouponMetaInfo(
         name = this.name,

@@ -1,7 +1,10 @@
 package com.pado.domain.type
 
-enum class CouponGrade {
-    NORMAL, RARE, UNIQUE, UNICORN;
+enum class CouponGrade(val rate: Int) {
+    NORMAL(50),
+    RARE(30),
+    UNIQUE(15),
+    UNICORN(5); // 50 30 15 5
 
 
     companion object {
